@@ -1,4 +1,5 @@
 import { CutCornerButton } from "../components/CutCornerButton"
+import { Hexagon } from "../components/Hexagon"
 
 
 export const HeroSection = () => {
@@ -22,6 +23,31 @@ export const HeroSection = () => {
 
         <div className="flex justify-center mt-24">
           <div className="inline-flex relative z-0">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <Hexagon className="size-[1100px]"/>
+            </div>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <Hexagon className="size-[1800px]" />
+            </div>
+            {/* Cubes */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="bg-zinc-900 size-[240px] inline-flex items-center justify-center rounded-full outline outline-[6px] -outline-offset-[6px] outline-fuchsia-500/10 absolute left-[200px] -top-[900px]">
+                <img 
+                  src="/assets/images/cube.png"
+                  alt="Cube"
+                  className="size-[140px]"
+                />
+              </div>
+            </div>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="bg-zinc-900 size-[240px] inline-flex items-center justify-center rounded-full outline outline-[6px] -outline-offset-[6px] outline-fuchsia-500/10 absolute left-[200px] top-[270px]">
+                <img
+                  src="/assets/images/cuboid.png"
+                  alt="Cuboid"
+                  className="size-[140px]"
+                />
+              </div>
+            </div>
             <img
               src="/assets/images/icosahedron.png"
               alt="Icosahedron"
