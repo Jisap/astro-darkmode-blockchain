@@ -1,3 +1,4 @@
+import { Circle } from "../components/Circle"
 import { CutCornerButton } from "../components/CutCornerButton"
 import { Hexagon } from "../components/Hexagon"
 
@@ -29,25 +30,37 @@ export const HeroSection = () => {
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Hexagon className="size-[1800px]" />
             </div>
-            {/* Cubes */}
+            {/* Cube */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="bg-zinc-900 size-[240px] inline-flex items-center justify-center rounded-full outline outline-[6px] -outline-offset-[6px] outline-fuchsia-500/10 absolute left-[200px] -top-[900px]">
+              <Circle className="absolute left-[200px] -top-[900px]">
                 <img 
                   src="/assets/images/cube.png"
                   alt="Cube"
                   className="size-[140px]"
                 />
-              </div>
+              </Circle>  
             </div>
+            {/* Cuboid */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="bg-zinc-900 size-[240px] inline-flex items-center justify-center rounded-full outline outline-[6px] -outline-offset-[6px] outline-fuchsia-500/10 absolute left-[200px] top-[270px]">
+              <Circle className="absolute left-[200px] top-[270px]">
                 <img
                   src="/assets/images/cuboid.png"
                   alt="Cuboid"
                   className="size-[140px]"
                 />
-              </div>
+              </Circle>
             </div>
+            {/* Torus */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <Circle className="absolute -left-[600px] -top-[80px]">
+                <img
+                  src="/assets/images/torus.png"
+                  alt="Torus"
+                  className="size-[140px]"
+                />
+              </Circle>
+            </div>
+            {/* Icosahedron */}
             <img
               src="/assets/images/icosahedron.png"
               alt="Icosahedron"
