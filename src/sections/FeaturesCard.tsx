@@ -1,3 +1,4 @@
+import { twMerge } from "tailwind-merge"
 
 
 
@@ -32,19 +33,35 @@ export const FeaturesCard = () => {
     return (
       <section className="py-24 overflow-x-clip -mt-28">
         <div className="container">
-          <h2 className="font-heading font-black text-4xl md:text-5xl text-center">
+          <h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl text-center">
             Discover the future of blockchain with blockforce
           </h2>
           
           {/* card */}
-          <div className="mt-36 flex">
+          <div className="mt-36 lg:mt-48 flex">
             <div className="flex flex-none gap-8">
               {cardData.map(({ image, title, description, color }) => (
 
                 <div className="relative z-0 p-8 md:p-10 max-w-xs md:max-w-md group" key={title}>
                   {/* Borde fuchsia */}
-                  <div className="absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 blur-lg opacity-0 group-hover:opacity-100 transition duration-300"></div>
-                  <div className="absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 group-hover:bg-fuchsia-400 transition duration-300"></div>
+                  <div 
+                    className={
+                      twMerge(
+                        "absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 blur-lg opacity-0 group-hover:opacity-100 transition duration-300",
+                         color === "lime" && "bg-lime-500",
+                         color === "cyan" && "bg-cyan-500",
+                         color === "violet" && "bg-violet-500",
+                      )}>
+                  </div>
+                  <div 
+                    className={
+                      twMerge(
+                        "absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 group-hover:bg-fuchsia-400 transition duration-300",
+                        color === "lime" && "bg-lime-500 group-hover:bg-lime-400",
+                        color === "cyan" && "bg-cyan-500 group-hover:bg-cyan-400",
+                        color === "violet" && "bg-violet-500 group-hover:bg-violet-400",
+                      )}>
+                  </div>
 
                   {/* Gradiente que simula el borde de la imagen */}
                   {/* 22deg = gradiente se inicia en la esquina superior derecha y termina en la esquina inferior izquierda */}
@@ -70,7 +87,15 @@ export const FeaturesCard = () => {
                   </p>
 
                   <div className="flex justify-between mt-12">
-                    <button className="text-sm font-heading uppercase font-extrabold tracking-wider text-fuchsia-500">
+                    <button 
+                      className={
+                        twMerge(
+                          "text-sm font-heading uppercase font-extrabold tracking-wider text-fuchsia-500", 
+                          color === "lime" && "text-lime-500",
+                          color === "cyan" && "text-cyan-500",
+                          color === "violet" && "text-violet-500",
+                        )}
+                    >
                       Learn More
                     </button>
                     <svg 
