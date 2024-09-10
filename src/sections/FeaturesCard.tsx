@@ -31,7 +31,7 @@ const cardData = [
 
 export const FeaturesCard = () => {
     return (
-      <section className="py-24 overflow-x-clip -mt-28">
+      <section className="py-24 overflow-x-clip md:-mt-28">
         <div className="container">
           <h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl text-center">
             Discover the future of blockchain with blockforce
