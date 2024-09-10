@@ -30,9 +30,9 @@ const cardData = [
 
 export const FeaturesCard = () => {
     return (
-      <section className="py-24 overflow-x-clip">
+      <section className="py-24 overflow-x-clip -mt-28">
         <div className="container">
-          <h2 className="font-heading font-black text-4xl text-center">
+          <h2 className="font-heading font-black text-4xl md:text-5xl text-center">
             Discover the future of blockchain with blockforce
           </h2>
           
@@ -41,7 +41,7 @@ export const FeaturesCard = () => {
             <div className="flex flex-none gap-8">
               {cardData.map(({ image, title, description, color }) => (
 
-                <div className="relative z-0 p-8 max-w-xs group" key={title}>
+                <div className="relative z-0 p-8 md:p-10 max-w-xs md:max-w-md group" key={title}>
                   {/* Borde fuchsia */}
                   <div className="absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 blur-lg opacity-0 group-hover:opacity-100 transition duration-300"></div>
                   <div className="absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 group-hover:bg-fuchsia-400 transition duration-300"></div>
@@ -92,9 +92,9 @@ export const FeaturesCard = () => {
 
           <div className="flex justify-center mt-10">
             <div className="bg-zinc-950 inline-flex gap-4 p-2.5 rounded-full">
-              {[...new Array(4)].fill(0).map((_, i) => (
+              {cardData.map(({ title }) => (
                 <div 
-                  key={i}
+                  key={title}
                   className="size-2.5 bg-zinc-500 rounded-full cursor-pointer"  
                 >
                 </div>
