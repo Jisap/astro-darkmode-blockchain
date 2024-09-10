@@ -1,6 +1,29 @@
 
 
-
+const cardData = [
+  {
+    image: '/assets/images/pill.png',
+    title: 'Revolutionary Blockchain API',
+    description: 'Effortessly integrate and manage blockchain data with our cutting-edge API, designed for seamless connectivity.',
+    color: 'fuchsia',
+  },{
+    image: '/assets/images/cuboid.png',
+    title: 'Descentralized Data Solutions',
+    description: 'Empower your apllication with decentralized data solutions, ensuring security and transparency ata every step.',
+    color: 'lime',
+  },
+  ,{
+    image: '/assets/images/cone.png',
+    title: 'Next-Gen Smart Contracts',
+    description: 'Unlock the potential of next-gen smart contracts with our robust and scalable API, tailored for modern blockchain needs.',
+    color: 'cyan',
+  },{
+    image: '/assets/images/icosahedron.png',
+    title: 'Seamless Blockchain Integration',
+    description: 'Integrate blockchain technology seamlessly into your projects, with minimal effort and maximum efficiency.',
+    color: 'violet',
+  }
+]
 
 export const FeaturesCard = () => {
     return (
@@ -50,7 +73,7 @@ export const FeaturesCard = () => {
                   viewBox="0 0 24 24" 
                   strokeWidth={2} 
                   stroke="currentColor" 
-                  className="size-8 text-zinc-500"
+                  className="size-8 text-zinc-500 group-hover:text-zinc-300 transition duration-300 -translate-x-2 group-hover:-translate-x-0"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                 </svg>
