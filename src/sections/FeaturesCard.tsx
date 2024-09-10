@@ -4,11 +4,18 @@
 
 export const FeaturesCard = () => {
     return (
-      <section>
+      <section className="py-24">
         <div className="container">
-          <h2>Discover the future of blockchain with blockforce</h2>
+          <h2 className="font-heading font-black text-4xl text-center">
+            Discover the future of blockchain with blockforce
+          </h2>
+          
+          {/* card */}
           <div>
-            <div>
+            <div className="relative z-0">
+              {/* 22deg = gradiente se inicia en la esquina superior derecha y termina en la esquina inferior izquierda */}
+              {/* mantendrá el color transparent hasta los primeros 40px, despues cambia abruptamente a negro y será visible hasta el final */}
+              <div className="absolute inset-0 bg-zinc-800 -z-10 rounded-2xl [mask-image:linear-gradient(225deg,transparent,transparent_40px,black_40px)]"></div>
               <img src="/assets/images/pill.png" alt="pill" />
               <h3>Revolutionary Blockchain API</h3>
               <p>
@@ -29,8 +36,9 @@ export const FeaturesCard = () => {
               </div>
             </div>
           </div>
-          <div>
-            <div>
+
+          <div className="flex justify-center">
+            <div className="bg-zinc-950 inline-flex gap-4 p-2.5 rounded-full">
               {[...new Array(4)].fill(0).map((_, i) => (
                 <div 
                   key={i}
