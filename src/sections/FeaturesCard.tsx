@@ -14,8 +14,9 @@ export const FeaturesCard = () => {
           <div className="mt-36">
             <div className="relative z-0 p-8 max-w-xs group">
               {/* Borde fuchsia */}
-              <div className="absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10"></div>
-              
+              <div className="absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 blur-lg opacity-0 group-hover:opacity-100 transition duration-300"></div>
+              <div className="absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 group-hover:bg-fuchsia-400 transition duration-300"></div>
+
               {/* Gradiente que simula el borde de la imagen */}
               {/* 22deg = gradiente se inicia en la esquina superior derecha y termina en la esquina inferior izquierda */}
               {/* mantendrá el color transparent hasta los primeros 40px, despues cambia abruptamente a negro y será visible hasta el final */}
