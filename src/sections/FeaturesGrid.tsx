@@ -17,7 +17,7 @@ export const FeaturesGrid = () => {
 
         <div className="grid grid-cols-3">
           <div className="col-span-2">
-            <h2 className="font-heding font-black text-4xl">Empowering the future of blockchain</h2>
+            <h2 className="font-heding font-black text-4xl md:text-5xl">Empowering the future of blockchain</h2>
             <p className="text-xl text-zinc-400 mt-8">Blockforge provides robust ans secure infraestructure to support the next generation of descentralized applications.</p>
             <ul className="flex flex-col gap-8 mt-12">
               {listItems.map((item) => (
@@ -39,19 +39,23 @@ export const FeaturesGrid = () => {
             </div>
           </div>
           <div>
-            <img 
-              src="/assets/images/torus-knot.png"
-              alt="Torus Knot"
-            />
+            <div className="relative inline-flex z-0">
+              <img 
+                src="/assets/images/torus-knot.png"
+                alt="Torus Knot"
+                className="size-96 max-w-none"
+              />
               <img
                 src="/assets/images/hemisphere.png"
                 alt="Hemisphere"
+                className="absolute size-96 top-3/4 -z-10"
               />
+            </div>
           </div>
         </div>
 
           <div>
-            <h2 className="font-heading font-black text-4xl">Blockforge leads the way.</h2>
+            <h2 className="font-heading font-black text-4xl ">Blockforge leads the way.</h2>
             <div className="flex flex-col text-xl text-zinc-400 mt-6 gap-6">
               <p className="">
                 Blockforge is dedicated to supporting the evolution of Web3 application by delivering the necessary infraestructure and security for Web3.
