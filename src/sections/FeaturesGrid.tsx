@@ -15,7 +15,8 @@ export const FeaturesGrid = () => {
       <div className="container">
         <div className="flex flex-col gap-56">
 
-          <div>
+        <div className="grid grid-cols-3">
+          <div className="col-span-2">
             <h2 className="font-heding font-black text-4xl">Empowering the future of blockchain</h2>
             <p className="text-xl text-zinc-400 mt-8">Blockforge provides robust ans secure infraestructure to support the next generation of descentralized applications.</p>
             <ul className="flex flex-col gap-8 mt-12">
@@ -37,6 +38,17 @@ export const FeaturesGrid = () => {
               </TextButton>
             </div>
           </div>
+          <div>
+            <img 
+              src="/assets/images/torus-knot.png"
+              alt="Torus Knot"
+            />
+              <img
+                src="/assets/images/hemisphere.png"
+                alt="Hemisphere"
+              />
+          </div>
+        </div>
 
           <div>
             <h2 className="font-heading font-black text-4xl">Blockforge leads the way.</h2>
