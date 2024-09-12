@@ -36,7 +36,20 @@ export const FeaturesGrid = () => {
           </div>
         </div>
 
-        
+        <div>
+          <h2>Blockforge leads the way.</h2>
+          <p>
+            Blockforge is dedicated to supporting the evolution of Web3 application by delivering the necessary infraestructure and security for Web3.
+          </p>
+          <p>
+            Blockforge champions Web3 for everyone. As a decentralized blockchain scaling platform, Blockforge enables developers to create scalable,
+            user-friendly Apps with low transaction costs, all while ensuring robust security. 
+          </p>
+          <div>
+            <CutCornerButton>Get Started</CutCornerButton>
+            <TextButton>Learn More</TextButton>
+          </div>
+        </div>
 
       </div>
     </section>
