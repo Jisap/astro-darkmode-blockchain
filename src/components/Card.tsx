@@ -5,9 +5,9 @@ import { TextButton } from "./TextButton";
 
 
 
-export const Card = (props:ComponentPropsWithoutRef<'div'> & { color?: string }) => {
+export const Card = (props:ComponentPropsWithoutRef<'div'> & { color?: string; buttonText?: string }) => {
 
-  const { color, children, className } = props;
+  const { color, children, className, buttonText } = props;
 
   return (
     <div className={twMerge("relative z-0 p-8 md:p-10 group", className)}>
@@ -40,7 +40,7 @@ export const Card = (props:ComponentPropsWithoutRef<'div'> & { color?: string })
 
       <div className="flex justify-between mt-12">
         <TextButton color={color}>
-          Learn More
+          {buttonText}
         </TextButton>
         <svg
           xmlns="http://www.w3.org/2000/svg"
