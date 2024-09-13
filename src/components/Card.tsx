@@ -40,7 +40,7 @@ export const Card = (props:ComponentPropsWithoutRef<'div'> & { color?: string; b
 
       <div className="flex justify-between mt-12">
         <TextButton color={color}>
-          {buttonText}
+          {buttonText || 'Learn More'}
         </TextButton>
         <svg
           xmlns="http://www.w3.org/2000/svg"
