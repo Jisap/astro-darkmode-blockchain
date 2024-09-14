@@ -1,6 +1,6 @@
 import { Card } from "../components/Card"
 import type { CollectionEntry } from "astro:content"
-
+import { getPostColorFromCategory } from "../utils/postsUtils";
 
 
 export const LatestPost = (props: { latestPosts: CollectionEntry <'blog'>[]}) => {
@@ -17,6 +17,7 @@ export const LatestPost = (props: { latestPosts: CollectionEntry <'blog'>[]}) =>
             <Card
               key={postIndex}
               buttonText="Read More"
+              color={getPostColorFromCategory(category)}
             >
               <div className="px-3 py-1.5 uppercase font-heading font-extrabold tracking-wider text-xs bg-fuchsia-500/15 text-fuchsia-500 inline-flex rounded-full">
                 { category }
