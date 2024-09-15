@@ -6,6 +6,7 @@ import { HeroSection } from "../sections/Hero";
 import { FeaturesGrid } from "../sections/FeaturesGrid";
 import { LatestPost } from "../sections/LatestPost";
 import { getCollection } from "astro:content";
+import { TestimonialsSection } from "../sections/Testimonials";
 
 const posts = await getCollection("blog");
 const latestPosts = posts.sort((a, b) => {                             // Sort posts by date 
@@ -22,4 +23,5 @@ const latestPosts = posts.sort((a, b) => {                             // Sort p
   <FeaturesCard />
   <FeaturesGrid />
   <LatestPost latestPosts={latestPosts} />
+  <TestimonialsSection />
 </DefaultLayout>
