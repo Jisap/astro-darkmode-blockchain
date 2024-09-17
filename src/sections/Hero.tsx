@@ -1,9 +1,28 @@
+import { motion, useScroll, useTransform } from "framer-motion"
 import { Circle } from "../components/Circle"
 import { CutCornerButton } from "../components/CutCornerButton"
 import { Hexagon } from "../components/Hexagon"
+import { useRef } from "react"
 
 
 export const HeroSection = () => {
+
+  const icosahedronRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({ // monitorizar el progreso de desplazamiento del la ref
+    target: icosahedronRef,
+    offset: [
+      'start end', // La animación cuando el elemento empiece a aparecer (cuando la parte superior del elemento coincida con la parte inferior de la ventana)
+      'end start'  // La animación terminará  cuando el elemento deje de estar visible (cuando la parte inferior del elemento coincida con la parte superior de la ventana )
+    ]
+  });
+
+  const icosahedronRotate = useTransform( // UseTransform tranforma el scrollYProgress en otro valor
+    scrollYProgress,
+    [0, 1],     // Cuando scrollYProgress es 0 (cuando el usuario no ha comenzado a desplazarse), la rotación será 30 grados.
+    [30, -45]   // Cuando scrollYProgress es 1 (cuando el usuario ha desplazado completamente la sección), la rotación será -45 grados.
+  ); 
+
   return (
     <section className="py-24 md:py-52 overflow-x-clip">
       <div className='container'>
@@ -61,16 +80,24 @@ export const HeroSection = () => {
               </Circle>
             </div>
             {/* Icosahedron */}
-            <img
-              src="/assets/images/icosahedron.png"
-              alt="Icosahedron"
-              className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate-[10%] brightness-[4%] hue-rotate-[240deg]"
-            />
-            <img 
-              src="/assets/images/icosahedron.png" 
-              alt="Icosahedron" 
-              className="w-[500px]"
-            />
+            <motion.div 
+              className="inline-flex" 
+              ref={icosahedronRef}
+              style={{
+                rotate: icosahedronRotate
+              }}  
+            >
+              <img
+                src="/assets/images/icosahedron.png"
+                alt="Icosahedron"
+                className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate-[10%] brightness-[4%] hue-rotate-[240deg]"
+              />
+              <img 
+                src="/assets/images/icosahedron.png" 
+                alt="Icosahedron" 
+                className="w-[500px]"
+              />
+            </motion.div>
           </div>
         </div>
 
