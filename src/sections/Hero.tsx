@@ -8,12 +8,21 @@ import { useRef } from "react"
 export const HeroSection = () => {
 
   const icosahedronRef = useRef(null);
+  const cubeRef = useRef(null);
 
-  const { scrollYProgress } = useScroll({ // monitorizar el progreso de desplazamiento del la ref
+  const { scrollYProgress } = useScroll({ // Monitoriza el progreso de desplazamiento del la ref
     target: icosahedronRef,
     offset: [
       'start end', // La animación cuando el elemento empiece a aparecer (cuando la parte superior del elemento coincida con la parte inferior de la ventana)
       'end start'  // La animación terminará  cuando el elemento deje de estar visible (cuando la parte inferior del elemento coincida con la parte superior de la ventana )
+    ]
+  });
+
+  const { scrollYProgress: cubeScrollYProgress } = useScroll({
+    target: cubeRef,
+    offset: [
+      'start end',
+      'end start'
     ]
   });
 
@@ -22,6 +31,8 @@ export const HeroSection = () => {
     [0, 1],     // Cuando scrollYProgress es 0 (cuando el usuario no ha comenzado a desplazarse), la rotación será 30 grados.
     [30, -45]   // Cuando scrollYProgress es 1 (cuando el usuario ha desplazado completamente la sección), la rotación será -45 grados.
   ); 
+
+  const cubeRotate = useTransform( cubeScrollYProgress,[0, 1], [100, -45]);
 
   return (
     <section className="py-24 md:py-52 overflow-x-clip">
@@ -52,10 +63,14 @@ export const HeroSection = () => {
             {/* Cube */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Circle className="absolute left-[200px] -top-[900px]">
-                <img 
+                <motion.img 
                   src="/assets/images/cube.png"
                   alt="Cube"
                   className="size-[140px]"
+                  ref={cubeRef}
+                  style={{
+                    rotate: cubeRotate
+                  }}
                 />
               </Circle>  
             </div>
