@@ -9,6 +9,8 @@ export const HeroSection = () => {
 
   const icosahedronRef = useRef(null);
   const cubeRef = useRef(null);
+  const torusRef = useRef(null);
+  const cuboidRef = useRef(null);
 
   const { scrollYProgress } = useScroll({ // Monitoriza el progreso de desplazamiento del la ref
     target: icosahedronRef,
@@ -26,6 +28,22 @@ export const HeroSection = () => {
     ]
   });
 
+  const { scrollYProgress: torusScrollYProgress } = useScroll({
+    target: torusRef,
+    offset: [
+      'start end',
+      'end start'
+    ]
+  });
+
+  const { scrollYProgress: cuboidScrollYProgress } = useScroll({
+    target: cuboidRef,
+    offset: [
+      'start end',
+      'end start'
+    ]
+  });
+
   const icosahedronRotate = useTransform( // UseTransform tranforma el scrollYProgress en otro valor
     scrollYProgress,
     [0, 1],     // Cuando scrollYProgress es 0 (cuando el usuario no ha comenzado a desplazarse), la rotación será 30 grados.
@@ -33,6 +51,8 @@ export const HeroSection = () => {
   ); 
 
   const cubeRotate = useTransform( cubeScrollYProgress,[0, 1], [100, -45]);
+  const torusRotate = useTransform( torusScrollYProgress,[0, 1], [20, -20]);
+  const cuboidRotate = useTransform( cuboidScrollYProgress,[0, 1], [20, -20]);
 
   return (
     <section className="py-24 md:py-52 overflow-x-clip">
@@ -77,20 +97,28 @@ export const HeroSection = () => {
             {/* Cuboid */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Circle className="absolute left-[200px] top-[270px]">
-                <img
+                <motion.img
                   src="/assets/images/cuboid.png"
                   alt="Cuboid"
                   className="size-[140px]"
+                  ref={cuboidRef}
+                  style={{
+                    rotate: cuboidRotate
+                  }}
                 />
               </Circle>
             </div>
             {/* Torus */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Circle className="absolute -left-[600px] -top-[80px]">
-                <img
+                <motion.img
                   src="/assets/images/torus.png"
                   alt="Torus"
                   className="size-[140px]"
+                  ref={torusRef}
+                  style={{
+                    rotate: torusRotate
+                  }}
                 />
               </Circle>
             </div>
