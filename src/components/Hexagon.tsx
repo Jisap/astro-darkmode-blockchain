@@ -11,11 +11,11 @@ export const Hexagon = (props: ComponentPropsWithoutRef<"svg"> & { size?: number
   const [totalPathLength, setTotalPathLength] = useState<number>();
 
   useLayoutEffect(() => {
-    const pathLength = pathRef.current?.getTotalLength();
+    const pathLength = pathRef.current?.getTotalLength(); // Longitud del path (longitud del hexagono)
     if (!pathLength) return;
-    const scaledPathLength = pathLength * size / 82;
-    setTotalPathLength(scaledPathLength)
-  }, [])
+    const scaledPathLength = pathLength * size / 82;      // Ajustar la longitud del trazo del hexágono en función del tamaño del componente
+    setTotalPathLength(scaledPathLength);                 // Cuando el usuario proporciona un size diferente, necesitamos escalar la longitud del trazo proporcionalmente.
+  }, []);                                                 // Se manteniene así la proporción y la apariencia de la animación consistente, independientemente del tamaño que se le dé al componente.  
 
   return (
     <div className="relative inline-flex">
@@ -49,15 +49,15 @@ export const Hexagon = (props: ComponentPropsWithoutRef<"svg"> & { size?: number
           strokeWidth="6"
           xmlns="http://www.w3.org/2000/svg"
           className={twMerge("text-fuchsia-500/30 -rotate-6 absolute", className)}
-          initial= {{ strokeDashoffset: 0 }}
-          animate={{ strokeDashoffset: reverse ? totalPathLength : totalPathLength * -1 }}
+          initial={{ strokeDashoffset: 0 }}                                                  // strokeDashoffset controla la cantidad visible del trazo del hexágono. Empieza desde cero
+          animate={{ strokeDashoffset: reverse ? totalPathLength : totalPathLength * -1 }}   // La animación mueve strokeDashoffset de 0 a totalPathLength (o su negativo), creando la ilusión de un trazo giratorio.
           transition={{
             repeat: Infinity,
             duration,
             ease: "linear",
           }}
           style={{
-            strokeDasharray: `500 ${totalPathLength - 500}`,
+            strokeDasharray: `500 ${totalPathLength - 500}`,  // Crea un patrón de trazo con 500 unidades visibles y el resto invisible.
             height: size,
             width: size,
           }}
