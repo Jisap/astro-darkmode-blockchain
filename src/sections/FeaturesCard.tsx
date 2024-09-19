@@ -35,18 +35,23 @@ const cardData = [
 export const FeaturesCard = () => {
 
   const [selectedCardIndex, setSelectedCardIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
+    if(isHovered) return;
+    const timeout =setTimeout(() => {
       setSelectedCardIndex( curr => curr === cardData.length - 1 ? 0 : curr + 1 )
-    }, 3000)
-  },[selectedCardIndex])
+    }, 3000);
+    return () => {
+      clearTimeout(timeout);
+    }
+  },[selectedCardIndex, isHovered])
 
   return (
     <section className="py-24 overflow-x-clip md:-mt-28">
       <div 
-        //className=" px-4 md:px-8 mx-auto lg:px-10"
-        className="container"
+        className=" px-4 md:px-8 mx-auto lg:px-10"
+        //className="container"
       >
         <h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl text-center">
           Discover the future of blockchain with blockforce
@@ -58,6 +63,8 @@ export const FeaturesCard = () => {
             {cardData.map(({ image, title, description, color }, cardIndex ) => (
               <div
                 key={cardIndex}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
                 className="inline-flex transition-all duration-500"
                 style={{
                   transform: `translateX( calc((-100% - 2rem) * ${selectedCardIndex} ))`,
