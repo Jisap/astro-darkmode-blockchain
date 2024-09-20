@@ -1,15 +1,56 @@
+import { useRef } from "react";
 import { CutCornerButton } from "../components/CutCornerButton"
 import { TextButton } from "../components/TextButton"
+import { motion, useScroll, useTransform } from "framer-motion";
 
 
 const listItems = [
   "Experience unparalleled security and scalability",
   "Fully benefit from scalable network effects",
   "Unlock the potential of decentralized networks",
-]
+];
 
 
 export const FeaturesGrid = () => {
+
+  const torusKnotRef = useRef(null);
+  const firsthHemisphereRef = useRef(null);
+
+
+  const { scrollYProgress: torusKnotScrollYProgress } = useScroll({
+    target: torusKnotRef,
+    offset: ['start end', 'end start']
+  });
+
+  const torusKnotTranslateY = useTransform(
+    torusKnotScrollYProgress,
+    [0, 1],
+    [100, -100]
+  );
+
+  const torusKnotRotate = useTransform(
+    torusKnotScrollYProgress,
+    [0, 1],
+    [30, -30]
+  );
+
+  const { scrollYProgress: firsthHemisphereScrollYProgress } = useScroll({
+    target: firsthHemisphereRef,
+    offset: ['start end', 'end start']
+  });
+
+  const firsthHemisphereTranslateY = useTransform(
+    firsthHemisphereScrollYProgress,
+    [0, 1],
+    [50, -50]
+  );
+
+  const firsthHemisphereRotate = useTransform(
+    firsthHemisphereScrollYProgress,
+    [0, 1],
+    [-20, -50]
+  );
+
   return (
     <section className="py-24 overflow-x-clip">
       <div className="container">
@@ -40,15 +81,25 @@ export const FeaturesGrid = () => {
             </div>
             <div className="hidden md:block">
               <div className="relative inline-flex z-0">
-                <img 
+                <motion.img 
                   src="/assets/images/torus-knot.png"
                   alt="Torus Knot"
                   className="size-96 max-w-none"
+                  ref={torusKnotRef}
+                  style={{
+                    translateY: torusKnotTranslateY,
+                    rotate: torusKnotRotate,
+                  }}
                 />
-                <img
+                <motion.img
                   src="/assets/images/hemisphere.png"
                   alt="Hemisphere"
                   className="absolute size-96 top-3/4 -z-10 scale-x-[-1]"
+                  ref={firsthHemisphereRef}
+                  style={{
+                    translateY: firsthHemisphereTranslateY,
+                    rotate: firsthHemisphereRotate,
+                  }}
                 />
               </div>
             </div>
