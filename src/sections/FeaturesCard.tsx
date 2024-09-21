@@ -50,7 +50,7 @@ export const FeaturesCard = () => {
   return (
     <section className="py-24 overflow-x-clip md:-mt-28">
       <div 
-        className=" px-6 md:px-8 mx-auto lg:px-10"
+        className=" px-6 md:px-8 mx-auto lg:px-14"
         //className="container"
       >
         <h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl text-center">
