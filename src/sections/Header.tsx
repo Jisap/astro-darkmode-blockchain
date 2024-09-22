@@ -89,14 +89,22 @@ export const HeaderSection = () => {
               </div>
               <div className="h-full flex justify-center items-center">
                 <nav className="flex flex-col items-center gap-12">
-                  {navLinks.map(({ title, href }) => (
-                    <a 
+                  {navLinks.map(({ title, href }, index) => (
+                    <motion.a 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.5,
+                        ease: "linear",
+                        delay: .25 * index,
+                      }}
                       href={href} 
                       key={title}
-                      className="text-4xl font-heading font-black text-zinc-500 hover:text-zinc-300 transition duration-300"
                     >
-                      {title}
-                    </a>
+                      <span className="text-4xl font-heading font-black text-zinc-500 hover:text-zinc-300 transition duration-300">
+                        {title}
+                      </span>
+                    </motion.a>
                   ))}
                 </nav>
               </div>
