@@ -11,13 +11,21 @@ import { CutCornerButton } from "../../components/CutCornerButton";
 ---
 <DefaultLayout>
   <HeaderSection client:load/>
-  <div>
+  <section>
     <!-- Hero section -->
-    <p>Latest Post</p>
-    <h1>Regulatory Challenges Facing Blockchain</h1>
-    <p>Understanding the regulatory landscape surrounding blockhain and what it means for the industry of this technology.</p>
-    <CutCornerButton>Read More</CutCornerButton>
-  </div>
+    <div class="container">
+      <div class="max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto">
+        <p class="uppercase font-extrabold text-center text-zinc-500 tracking-wider">
+          Latest Post
+        </p>
+        <h1 class="font-heading font-black text-7xl text-center mt-4">
+          Regulatory Challenges Facing Blockchain
+        </h1>
+        <p>Understanding the regulatory landscape surrounding blockhain and what it means for the industry of this technology.</p>
+        <CutCornerButton>Read More</CutCornerButton>
+      </div>
+    </div>
+  </section>
   <div>
     <!-- Blog section -->
   </div>
