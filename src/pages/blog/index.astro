@@ -4,4 +4,21 @@
 // const posts = (await getCollection('blog')).sort(
 // 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 // );
+
+import DefaultLayout from "../../layouts/Default.astro"
+import { HeaderSection } from "../../sections/Header"
+import { CutCornerButton } from "../../components/CutCornerButton";
 ---
+<DefaultLayout>
+  <HeaderSection client:load/>
+  <div>
+    <!-- Hero section -->
+    <p>Latest Post</p>
+    <h1>Regulatory Challenges Facing Blockchain</h1>
+    <p>Understanding the regulatory landscape surrounding blockhain and what it means for the industry of this technology.</p>
+    <CutCornerButton>Read More</CutCornerButton>
+  </div>
+  <div>
+    <!-- Blog section -->
+  </div>
+</DefaultLayout>
