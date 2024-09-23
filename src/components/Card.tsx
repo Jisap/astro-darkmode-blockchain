@@ -34,7 +34,7 @@ export const Card = (props:ComponentPropsWithoutRef<'div'> & { color?: string; b
       <div>{children}</div>
 
       {/* Gradiente que simula el borde de la imagen */}
-      {/* 22deg = gradiente se inicia en la esquina superior derecha y termina en la esquina inferior izquierda */}
+      {/* 225deg = gradiente se inicia en la esquina superior derecha y termina en la esquina inferior izquierda */}
       {/* mantendrá el color transparent hasta los primeros 40px, despues cambia abruptamente a negro y será visible hasta el final */}
       <div className="absolute inset-0 bg-zinc-800 -z-10 rounded-2xl [mask-image:linear-gradient(225deg,transparent,transparent_40px,black_40px)]"></div>
 
