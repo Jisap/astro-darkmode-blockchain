@@ -1,6 +1,5 @@
 ---
 import DefaultLayout from "../../layouts/Default.astro";
-import { HeaderSection } from "../../sections/Header";
 import { CutCornerButton } from "../../components/CutCornerButton";
 import { Hexagon } from "../../components/Hexagon";
 import { getCollection } from "astro:content";
@@ -9,9 +8,7 @@ import { Tag } from "../../components/Tag";
 import { getPostColorFromCategory } from "../../utils/postsUtils";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
-import { TestimonialsSection } from "../../sections/Testimonials";
-import { CallToAction } from "../../sections/CallToAction";
-import { Footer } from "../../sections/Footer";
+
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -21,7 +18,6 @@ const latestPost = posts[0];
 ---
 
 <DefaultLayout>
-  <HeaderSection client:load />
   <section class="py-60 relative overflow-x-clip">
     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
       <Hexagon size={800} client:load duration={30} />
@@ -125,8 +121,5 @@ const latestPost = posts[0];
         </div>
       </div>
     </div>
-  </section>
-  <TestimonialsSection client:load/>
-  <CallToAction client:load />
-  <Footer />
+  </section> 
 </DefaultLayout>
