@@ -9,6 +9,9 @@ import { Tag } from "../../components/Tag";
 import { getPostColorFromCategory } from "../../utils/postsUtils";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
+import { TestimonialsSection } from "../../sections/Testimonials";
+import { CallToAction } from "../../sections/CallToAction";
+import { Footer } from "../../sections/Footer";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -48,7 +51,7 @@ const latestPost = posts[0];
       </div>
     </div>
   </section>
-  <section class="pb-[1000px]">
+  <section class="py-32 bg-zinc-900/30 backdrop-blur-sm">
     <!-- Blog section -->
     <div class="container">
       <div class="grid grid-cols-2 gap-8">
@@ -123,4 +126,7 @@ const latestPost = posts[0];
       </div>
     </div>
   </section>
+  <TestimonialsSection client:load/>
+  <CallToAction client:load />
+  <Footer />
 </DefaultLayout>
