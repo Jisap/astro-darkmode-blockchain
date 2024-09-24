@@ -8,6 +8,7 @@ import { Card } from "../../components/Card";
 import { Tag } from "../../components/Tag";
 import { getPostColorFromCategory } from "../../utils/postsUtils";
 import { twMerge } from "tailwind-merge";
+import { motion } from "framer-motion";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -56,9 +57,17 @@ const latestPost = posts[0];
           {
             posts.map(
               ({ data: { category, title, description }, slug }, postIndex) => (
-                <a
+                <motion.a
+                  client:load
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "easeIn",
+                  }}
                   href={`/blog/${slug}`}
-                  class={twMerge(postIndex % 2 === 0 ? "" : "hidden")}
+                  className={twMerge(postIndex % 2 === 0 ? "" : "hidden")}
                 >
                   <Card
                     color={getPostColorFromCategory(category)}
@@ -72,7 +81,7 @@ const latestPost = posts[0];
                     </h2>
                     <p class="text-lg mt-6 text-zinc-400">{description}</p>
                   </Card>
-                </a>
+                </motion.a>
               )
             )
           }
@@ -80,23 +89,35 @@ const latestPost = posts[0];
         <!-- 2nd column -->
         <div class="flex flex-col gap-12 mt-24">
           {
-            posts.map(({ data: { category, title, description }, slug }, postIndex) => (
-              <a
-                href={`/blog/${slug}`}
-                class={twMerge(postIndex % 2 === 0 ? "hidden" : "")}
-              >
-                <Card
-                  color={getPostColorFromCategory(category)}
-                  buttonText="Read More"
+            posts.map(
+              ({ data: { category, title, description }, slug }, postIndex) => (
+                <motion.a
+                  client:load
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "easeIn",
+                  }}
+                  href={`/blog/${slug}`}
+                  className={twMerge(postIndex % 2 === 0 ? "hidden" : "")}
                 >
-                  <Tag color={getPostColorFromCategory(category)}>
-                    {category}
-                  </Tag>
-                  <h2 class="font-heading font-black text-3xl mt-4">{title}</h2>
-                  <p class="text-lg mt-6 text-zinc-400">{description}</p>
-                </Card>
-              </a>
-            ))
+                  <Card
+                    color={getPostColorFromCategory(category)}
+                    buttonText="Read More"
+                  >
+                    <Tag color={getPostColorFromCategory(category)}>
+                      {category}
+                    </Tag>
+                    <h2 class="font-heading font-black text-3xl mt-4">
+                      {title}
+                    </h2>
+                    <p class="text-lg mt-6 text-zinc-400">{description}</p>
+                  </Card>
+                </motion.a>
+              )
+            )
           }
         </div>
       </div>
