@@ -9,9 +9,10 @@ import { getPostColorFromCategory } from "../../utils/postsUtils";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
 
+type BlogPost = CollectionEntry<"blog">;
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+const posts:BlogPost[] = (await getCollection("blog")).sort(
+  (a:BlogPost, b:BlogPost) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
 const latestPost = posts[0];
@@ -33,10 +34,14 @@ const latestPost = posts[0];
         >
           Latest Post
         </p>
-        <h1 class="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-center mt-4">
+        <h1
+          class="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-center mt-4"
+        >
           {latestPost.data.title}
         </h1>
-        <p class="text-center text-xl md:text-2xl mt-6 text-zinc-400 max-w-xl mx-auto">
+        <p
+          class="text-center text-xl md:text-2xl mt-6 text-zinc-400 max-w-xl mx-auto"
+        >
           {latestPost.data.description}
         </p>
         <div class="flex justify-center mt-10">
@@ -47,7 +52,7 @@ const latestPost = posts[0];
       </div>
     </div>
   </section>
-  
+
   <section class="py-32 bg-zinc-900/30 backdrop-blur-sm">
     <!-- Blog section -->
     <div class="container">
@@ -67,7 +72,9 @@ const latestPost = posts[0];
                     ease: "easeIn",
                   }}
                   href={`/blog/${slug}`}
-                  className={twMerge(postIndex % 2 === 0 ? "" : "block md:hidden")}
+                  className={twMerge(
+                    postIndex % 2 === 0 ? "" : "block md:hidden"
+                  )}
                 >
                   <Card
                     color={getPostColorFromCategory(category)}
@@ -122,5 +129,5 @@ const latestPost = posts[0];
         </div>
       </div>
     </div>
-  </section> 
+  </section>
 </DefaultLayout>
