@@ -85,7 +85,9 @@ export const LatestPost = (props: { latestPosts: CollectionEntry<'blog'>[] }) =>
           </motion.div>
         </div>
         <div className="flex justify-center mt-48 md:mt-32">
-          <CutCornerButton>Read the blog</CutCornerButton>
+          <a href="/blog">
+            <CutCornerButton>Read the blog</CutCornerButton>
+          </a>
         </div>
       </div>
     </section>
