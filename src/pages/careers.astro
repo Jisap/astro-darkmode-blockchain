@@ -1,16 +1,36 @@
 ---
+import { getCollection } from "astro:content";
+import InteriorContent from "../components/InteriorContent.astro";
 import InteriorHero from "../components/InteriorHero.astro";
 import Default from "../layouts/Default.astro";
+import { Card } from "../components/Card";
+import { Tag } from "../components/Tag";
+import { getColorFromPositionType } from "../utils/postsUtils";
 
+const positions = await getCollection("positions");
 
 ---
 
 <Default>
   <InteriorHero>
     <p class="uppercase font-extrabold text-center text-zinc-500 tracking-wider">Join the team</p>
-    <h1 class="font-heading font-black text-7xl text-center mt-4">We are hiring</h1>
-    <p class="text-center text-2xl mt-6 max-w-xl mx-auto text-zinc-400">
+    <h1 class="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-center mt-4">We are hiring</h1>
+    <p class="text-center text-xl md:text-2xl mt-6 max-w-xl mx-auto text-zinc-400">
       We are always looking for talented individuals passionate about building blockchain products that make a difference.
     </p>
   </InteriorHero>
+  <InteriorContent>
+    <div class="pb-[1000px]">
+      {positions.map(({data: { title, type, description, category, remote }}) => (
+        <Card>
+          <div>
+            {remote && ( <Tag>Remote</Tag>)}
+            <Tag color={getColorFromPositionType(type)}>{type}</Tag>
+          </div>
+          <h2>{title}</h2>
+
+        </Card>
+      ))}
+    </div>
+  </InteriorContent>
 </Default>

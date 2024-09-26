@@ -13,3 +13,16 @@ export const getPostColorFromCategory = ( category:string ) => {
       return "fuchsia";
   }
 }
+
+export const getColorFromPositionType = ( type:string ) => {
+  switch(type) {
+    case "Full Time":
+      return "lime";
+    case "Part Time":
+      return "cyan";
+    case "Contract":
+      return "violet";
+    default:
+      return "fuchsia";
+  }
+}
